@@ -1,14 +1,14 @@
 const fs = require("node:fs");
 
 function readFileContent(filePath) {
-    try {
-        let data = fs.readFileSync(filePath, 'utf-8');
-        console.log("File Content:");
-        console.log(data);
-    } catch(err) {
-        console.log("Error reading file", err.message);
-    }
-    
+    fs.readFile(filePath, 'utf8', (err, data) => {
+        if(err) {
+            console.log("Error reading file: ", err.message);
+        } else {
+            console.log("File Content:");
+            console.log(data);
+        }
+    });
 }
 
 
